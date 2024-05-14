@@ -31,7 +31,17 @@ class ModelTrainer:
                 "Random Forest Classifier": RandomForestClassifier()
             }
             
+            # New parameters for finetuning the RandomForestClassifier
+            #params={
+            #    "Random Forest Classifier":{
+            #        'model__n_estimators': [50,100,200,300,400,500],
+            #        'model__max_depth': [None,5,10,15,20]
+            #   }
+            #}
+            
+            
             model_report:dict=evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models)
+            # #model_report:dict=evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models, param=params)
             
             # To get best model score from dict
             best_model_score=max(sorted(model_report.values()))
